@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>Financial Simulator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <font face = "arial">
+    <h2 align = "center">
+    Complete Financial Simulator by
+    <a href = "https://asarantsev.github.io/WebArchive/">Andrey Sarantsev</a>
+    </h2>
+    <h3 align = "center">
+    <a href = "https://my-finance.org/2025/06/25/simulator-final-update/">Explanation</a> &nbsp;
+    <a href = "https://my-finance.org/2025/06/18/disclaimer/"> Disclaimer</a> &nbsp;
+    </h3>
+    <div align = "center"> <font size = "+2"> (1) USA stocks (2) Foreign stocks (3) USA corporate bonds </font> </div>
+    <div> <font size = "+2"> <form action="{{ url_for('computation')}}" method="POST">
+        <p align = "center">
+            <input type="submit" style="height:40px;font-size:24pt;background-color: HoneyDew;" value = "Compute">
+        </p>
+        <datalist id="tickmarks">
+            <option value="10"></option>
+            <option value="20"></option>
+            <option value="30"></option>
+            <option value="40"></option>
+            <option value="50"></option>
+            <option value="60"></option>
+            <option value="70"></option>
+            <option value="80"></option>
+            <option value="90"></option>
+        </datalist>
+        <p align = "center">
+            <label for = "bond0"> Stock-Bond split at start </label> <br/>
+            100% Stocks <input type="range" id="bond0" name="bond0" min="0" max="100" value="10" list = "tickmarks" style="width:400px"> 100% Bonds</label> <br/>
+            <label for = "bond1"> Stock-Bond split at end </label> <br/>
+            100% Stocks <input type="range" id="bond1" name="bond1" min="0" max="100" value="40" list = "tickmarks" style="width:400px"> 100% Bonds</label> <br/>
+            <label for="intl"> USA-Foreign stock split </label> <br/>
+            100% Stocks <input type="range" id="intl" name="intl" min="0" max="100" value="40" list = "tickmarks" style="width:400px"> 100% Foreign</label> <br/>
+        </p>
+        <p align = "center">
+            <label for = 'action'> Withdrawals or contributions? </label>
+            <select name = 'action' style = "height:30px;font-size:25px;background-color: HoneyDew;" required>
+                <option value = "-1"> Withdrawals </option>
+                <option value = "+1"> Contributions </option>
+            </select>
+        </p>
+        <p align = "center">
+            <label for = 'initialFlow'> Initial year withdrawals/contributions </label>
+                <input type="number" name="initialFlow" value = "0"
+                style="height:30px;width:150px;font-size:25px;background-color: HoneyDew;" min = "0" step = "0.1" required>
+        </p>
+        <p align = "center">
+            <label for = 'change'> Increase or decrease withdrawals/contributions? </label>
+                <select name = 'change' style = "height:30px;font-size:25px;background-color: HoneyDew;" required>
+                    <option value = "+1"> Increase </option>
+                    <option value = "-1"> Decrease </option>
+                </select>
+            <label for = 'growthFlow'> Annually By % </label>
+                <input type="number" name="growthFlow" value = "0"
+                style="height:30px;width:90px;font-size:25px;background-color: HoneyDew;" step = "0.1" min = "0" max = "100" required>
+        </p>
+        <p align = "center">
+            <label for="initWealth"> Initial Wealth </label>
+            <input type="number" name="initWealth" value = 1000
+            style = "height:30px;width:150px;font-size:25px;background-color: HoneyDew;" min = "0" step = "1" required>
+            &nbsp; <label for="years"> Time in Years </label>
+                <input type="number" name="years" value = "20"
+                style = "height:30px;width:80px;font-size:25px; background-color: HoneyDew;" min = "0" max = "50" required>
+        </p>
+        </font> </form> </div>
+        </body> </html>
